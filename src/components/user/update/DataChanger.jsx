@@ -17,7 +17,8 @@ const DataChanger = ({current, previous, type, name, handleInput, handleUpdate, 
                 />
                 <StyledChangeFieldButton
                     onClick={handleUpdate}
-                    outline>
+                    outline
+                >
                     Change {name}
                 </StyledChangeFieldButton>
             </MDBInputGroup>
