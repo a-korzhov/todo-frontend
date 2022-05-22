@@ -16,8 +16,9 @@ export const login = createAsyncThunk(
     async ({loginForm, rememberMe, navigate, toast}, {rejectWithValue}) => {
         try {
             const response = await loginRequest({...loginForm, rememberMe});
-            localStorage.setItem("auth", response.headers.authorization);
+            console.log("RESPONSE:", response);
             console.log(response.headers.authorization)
+            localStorage.setItem("auth", response.headers.authorization);
             toast.success("Logged successfully");
             navigate('/');
             return response.data;

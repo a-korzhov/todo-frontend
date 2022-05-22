@@ -13,7 +13,8 @@ export const addTask = createAsyncThunk(
     async ({taskForm, toast}, {rejectWithValue}) => {
         try {
             const response = await createTaskRequest(taskForm);
-            toast.success('Task created successfully');
+            // toast.success('Task created successfully');
+            window.location.reload();
             return response.data;
         } catch (error) {
             return rejectWithValue(error.response.data);
@@ -95,12 +96,11 @@ const tasksSlice = createSlice({
         }
     },
     extraReducers: {
-        [addTask.pending]: (state, action) => {
+        [addTask.pending]: (state) => {
             state.loading = true;
         },
-        [addTask.fulfilled]: (state, action) => {
+        [addTask.fulfilled]: (state) => {
             state.loading = false;
-            state.tasks.push(action.payload);
         },
         [addTask.rejected]: (state, action) => {
             state.loading = false;

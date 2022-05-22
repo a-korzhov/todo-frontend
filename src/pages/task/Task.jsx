@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getTask, taskSelector, updateField} from "../../store/features/taskSlice";
-import {Button, Card, CardActions, CardContent, Skeleton, Typography} from "@mui/material";
+import {Button, Card, CardActions, CardContent, Skeleton} from "@mui/material";
 import {StyledWrapper} from "../../components/style";
 import TaskPriority from "../../components/task/TaskPriority";
 import AccessDenied from "../../components/common/AccessDenied";
