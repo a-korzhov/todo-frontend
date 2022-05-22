@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {MDBContainer, MDBDropdown, MDBNavbar} from "mdb-react-ui-kit";
 import jwtDecode from "jwt-decode";
@@ -9,10 +9,13 @@ import UserAvatar from "../image/UserAvatar";
 import HeaderTitle from "./HeaderTitle";
 import HeaderTaskLink from "./HeaderTaskLink";
 import AddTaskLink from "../user/input/AddTaskLink";
-import {Box} from "@mui/material";
+import {Box, Typography} from "@mui/material";
+import {getUsersCountRequest} from "../../rest/api";
 
 const Header = () => {
     const {id, email, status, imageData} = useSelector(authUserSelector);
+    const [usersCount, setUsersCount] = useState(0);
+
     const dispatch = useDispatch();
     const token = localStorage.getItem('auth');
 
@@ -24,28 +27,43 @@ const Header = () => {
             }
             dispatch(getCurrentUser())
         }
+        getUsersCount();
     }, [dispatch, token])
+
+    const getUsersCount = () => {
+        getUsersCountRequest().then(resp => {
+            setUsersCount(resp.data);
+        }).catch(err => {
+            console.log('Failed to retrieve users count')
+        })
+    }
 
     return (
         <MDBNavbar fixed="top" expand="lg" style={{backgroundColor: "#006E7F"}}>
             <MDBContainer>
                 <HeaderTitle/>
                 {id ? (
-                    <>
-                        <HeaderTaskLink/>
-                        <Box ml={3}>
-                            <AddTaskLink/>
-                        </Box>
-                        <UserAvatar
-                            status={status}
-                            email={email}
-                            imageData={imageData}
-                        />
-                        <MDBDropdown className='btn-group'>
-                            <LogoutButton/>
-                            <Menu/>
-                        </MDBDropdown>
-                    </>) : null}
+                        <>
+                            <HeaderTaskLink/>
+                            <Box ml={3}>
+                                <AddTaskLink/>
+                            </Box>
+                            <UserAvatar
+                                status={status}
+                                email={email}
+                                imageData={imageData}
+                            />
+                            <MDBDropdown className='btn-group'>
+                                <LogoutButton/>
+                                <Menu/>
+                            </MDBDropdown>
+                        </>)
+                    : <Typography
+                        sx={{
+                            color: '#F8CB2E'
+                        }}>
+                        Us already: {usersCount}
+                    </Typography>}
             </MDBContainer>
         </MDBNavbar>
     );

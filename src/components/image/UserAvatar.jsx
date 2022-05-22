@@ -5,7 +5,6 @@ import {dataToJpg} from "../../util/ImageConverter";
 import {StyledActiveBadge, StyledInactiveBadge} from "../style";
 
 const UserAvatar = ({status, email, imageData}) => {
-    console.log(status);
     return (
         <>
             {status === 'ACTIVE' ?

@@ -21,6 +21,7 @@ const patchRequestBody = (id, fieldName, replaced) => {
 
 // ------- GET REQUESTS ---------
 export const getCurrentUserRequest = () => API.get('/users/current');
+export const getUsersCountRequest = () => API.get('/users-count');
 export const getTasksRequest = () => API.get('/tasks');
 export const getTaskByIdRequest = (id) => API.get(`/tasks/${id}`);
 

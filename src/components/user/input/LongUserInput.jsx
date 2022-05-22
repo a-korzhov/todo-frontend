@@ -11,7 +11,6 @@ const LongUserInput = ({label, type, value, name, onChange, validation = `${labe
                 name={name}
                 onChange={onChange}
                 required
-                invalid
                 validation={validation}
                 contrast
             />

@@ -11,7 +11,6 @@ const ShortUserInput = ({label, type, value, name, onChange, validation = `${lab
                 name={name}
                 onChange={onChange}
                 required
-                invalid
                 validation={validation}
                 contrast
             />
