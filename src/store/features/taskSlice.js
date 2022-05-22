@@ -13,7 +13,6 @@ export const addTask = createAsyncThunk(
     async ({taskForm, toast}, {rejectWithValue}) => {
         try {
             const response = await createTaskRequest(taskForm);
-            // toast.success('Task created successfully');
             window.location.reload();
             return response.data;
         } catch (error) {

@@ -36,7 +36,7 @@ export const signup = createAsyncThunk(
     async ({signUpForm, navigate, toast}, {rejectWithValue}) => {
         try {
             const response = await signupRequest(signUpForm);
-            toast.success("Account created successfully!");
+            toast.success("Activation code sent to your email");
             navigate('/login');
             return response.data;
         } catch (error) {
@@ -144,6 +144,10 @@ const authSlice = createSlice({
         setLogout: (state, action) => {
             localStorage.clear();
             state.user = null;
+        },
+        clearError: (state, action) => {
+            state.error = null;
+            state.validationErrors = [];
         }
     },
     extraReducers: {
@@ -166,7 +170,6 @@ const authSlice = createSlice({
         },
         [signup.fulfilled]: (state, action) => {
             state.loading = false;
-            state.user = action.payload;
         },
         [signup.rejected]: (state, action) => {
             state.loading = false;
@@ -217,7 +220,7 @@ const authSlice = createSlice({
     }
 })
 
-export const {setLogout} = authSlice.actions;
+export const {setLogout, clearError} = authSlice.actions;
 
 export const authUserSelector = state => ({...state.auth.user});
 export const authSelector = (state) => ({...state.auth});

@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {MDBCard, MDBCardBody, MDBValidation} from "mdb-react-ui-kit";
 import {toast} from "react-toastify";
-import {authSelector, signup} from "../../store/features/authSlice";
+import {authSelector, clearError, signup} from "../../store/features/authSlice";
 import {handleInputChangeStrategy} from "../../util/ComponentUtils";
 import {signUpFormInitState} from "../../util/initStates";
 import {StyledWrapper} from "../../components/style";
@@ -31,6 +31,7 @@ const SignUp = () => {
         if (email && password && phone && confirmPassword && role) {
             dispatch(signup({signUpForm, navigate, toast}));
         }
+        dispatch(clearError())
     };
 
     const handleChangeSignUpForm = (event) => handleInputChangeStrategy(event, signUpForm, setSignUpForm);

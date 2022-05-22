@@ -12,8 +12,6 @@ const TaskList = () => {
 
     const dispatch = useDispatch();
 
-    console.log("TASKS", tasks);
-
     useEffect(() => {
         dispatch(getTasks());
     }, [dispatch])
