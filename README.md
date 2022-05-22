@@ -7,7 +7,7 @@ Link to the [backend repository](https://github.com/a-korzhov/todo-backend)
 ## Technologies
 
 - React 18
-- React Router Dom
+- React Router DOM
 - React Toastify
 - React Redux
 - Redux Toolkit
