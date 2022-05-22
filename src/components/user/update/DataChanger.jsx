@@ -3,7 +3,7 @@ import {MDBInputGroup} from "mdb-react-ui-kit";
 import {Box} from "@mui/material";
 import {StyledChangeFieldButton} from "../../style";
 
-const DataChanger = ({current, previous, type, name, handleInput, handleUpdate}) => {
+const DataChanger = ({current, previous, type, name, handleInput, handleUpdate, isDisabled}) => {
     return (
         <Box p={1}>
             <MDBInputGroup className='mb-3'>
@@ -12,6 +12,7 @@ const DataChanger = ({current, previous, type, name, handleInput, handleUpdate})
                     className='form-control'
                     value={current ? current : previous}
                     name={name}
+                    disabled={isDisabled}
                     onChange={handleInput}
                 />
                 <StyledChangeFieldButton

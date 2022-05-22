@@ -22,6 +22,7 @@ const EmailChanger = () => {
             previous={email}
             type='email'
             name={emailField}
+            isDisabled={true}
             handleInput={(e) => setEmailValue(e.target.value)}
             handleUpdate={handleUpdateEmail}
         />

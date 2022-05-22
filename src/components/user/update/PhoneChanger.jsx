@@ -22,6 +22,7 @@ const PhoneChanger = () => {
             previous={phone}
             type='email'
             name={phoneField}
+            isDisabled={false}
             handleInput={(e) => setPhoneValue(e.target.value)}
             handleUpdate={handleUpdatePhone}
         />
